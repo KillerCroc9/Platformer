@@ -37,7 +37,7 @@ public class MazeGenrator : MonoBehaviour
             {
                 if (maze.mazeGrid[i, j] == 'X')
                 {
-                    if (UnityEngine.Random.Range(0, 100) < 35 && !HasNeighbour(trapGrid, i, j))
+                    if (UnityEngine.Random.Range(0, 100) < 35 && !HasNeighbour(trapGrid, i, j) && j > 2)
                     {
                         trapGrid[i, j] = true;
                         Instantiate(trap, new Vector3((j * 35), 35, (i * 35)), Quaternion.identity, Maze.transform);

@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 196a83e4fac7a644ebc189706f6c2082, type: 2}
+  - {fileID: 2100000, guid: 7ba8162d09542e34b9a72bb543447494, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!4 &2878767476355619504 stripped
@@ -200,7 +204,7 @@ MeshCollider:
   m_Mesh: {fileID: -7707300467724041674, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!95 &5488084396418335125
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -217,7 +221,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4554600287968174435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +294,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!1 &3743715069439056946 stripped
@@ -312,7 +321,7 @@ MeshCollider:
   m_Mesh: {fileID: -7707300467724041674, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!95 &1392888926236832514
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -329,7 +338,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &4089138349317637768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
@@ -406,6 +416,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!1 &4795739407599154064 stripped
@@ -429,7 +443,7 @@ MeshCollider:
   m_Mesh: {fileID: -7707300467724041674, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!95 &5100980723576064713
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -446,7 +460,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5315992732412045610 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
@@ -473,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
       propertyPath: m_LocalScale.z
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -515,6 +530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a0b5e2b4a2744e8a43046fb509fd6, type: 2}
     - target: {fileID: 919132149155446097, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
       propertyPath: m_Name
       value: OPM0041 (3)
@@ -522,6 +541,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
@@ -546,7 +569,7 @@ MeshCollider:
   m_Mesh: {fileID: -7707300467724041674, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
 --- !u!95 &2506743419584245182
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -563,7 +586,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8961320707101730140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f14ea017bb0fc543aa99d1b3db061df, type: 3}
