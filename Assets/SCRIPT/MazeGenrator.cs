@@ -12,7 +12,7 @@ public class MazeGenrator : MonoBehaviour
 
     public GameObject cube;
     public GameObject trap;
-
+    public GameObject spike;
     int size = 40;
     public GameObject Players;
 
@@ -30,13 +30,24 @@ public class MazeGenrator : MonoBehaviour
     {
         MyMaze maze = new MyMaze(size, size);
         bool[,] trapGrid = new bool[size, size];
+        bool[,] walkGrid = new bool[size, size];
         maze.UpdateGrid();
+
+        List<(int, int)> indexes = FindAllConsecutiveZeros(maze.mazeGrid, 5);
+
+        foreach ((int col, int row) in indexes)
+        {
+                Instantiate(spike, new Vector3((col * 35), 35, (row * 35)), Quaternion.identity, Maze.transform);
+        }
         for (int i = 0; i < size - 1; i++)
         {
             for (int j = 0; j < size - 1; j++)
             {
+             
                 if (maze.mazeGrid[i, j] == 'X')
                 {
+                   
+
                     if (UnityEngine.Random.Range(0, 100) < 35 && !HasNeighbour(trapGrid, i, j) && j > 2)
                     {
                         trapGrid[i, j] = true;
@@ -76,6 +87,41 @@ public class MazeGenrator : MonoBehaviour
         }
         return false;
     }
+    public static List<(int, int)> FindAllConsecutiveZeros(char[,] array, int consecutiveCount)
+    {
+        int rowCount = ((array.GetLength(0)-1)/2);
+        int colCount = ((array.GetLength(1)-1)/2);
+        List<(int, int)> result = new List<(int, int)>();
+
+        for (int j = 2; j < colCount; j++)
+        {
+            for (int i = 2; i < rowCount - consecutiveCount + 1;)
+            {
+                int k;
+                for (k = 0; k < consecutiveCount; k++)
+                {
+                    if (array[i + k, j] != ' ')
+                    {
+                        break;
+                    }
+                }
+
+                if (k == consecutiveCount && (i + k == rowCount || array[i + k, j] != ' '))
+                {
+                    result.Add((j, i));
+                    i += consecutiveCount + 1; // Skip the wall after finding the first occurrence
+                }
+                else
+                {
+                    i++; // Proceed to the next index if the current sequence is not valid
+                }
+            }
+        }
+
+        return result;
+    }
+
+
     /* void cleaner()
      {
          foreach (Transform child in Maze.transform)
@@ -84,9 +130,9 @@ public class MazeGenrator : MonoBehaviour
          }
      }*/
 
-            /// <summary>
-            /// Creates a random, perfect (without cycles) maze
-            /// </summary>
+    /// <summary>
+    /// Creates a random, perfect (without cycles) maze
+    /// </summary>
     public class MyMaze
     {
      

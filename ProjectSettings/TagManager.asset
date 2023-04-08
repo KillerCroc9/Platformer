@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Missile
   - Trap
+  - TrapHolder
+  - Wall
   layers:
   - Default
   - TransparentFX

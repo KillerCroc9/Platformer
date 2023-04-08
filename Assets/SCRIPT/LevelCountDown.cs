@@ -10,10 +10,11 @@ public class LevelCountDown : MonoBehaviour
     public TextMeshProUGUI countdownText; // the Text component that displays the countdown
     public GameObject lose;
     private float startTime; // the time when the countdown started
+    bool called = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        startTime = Time.time;
     }
     void Update()
     {
@@ -24,8 +25,9 @@ public class LevelCountDown : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeRemaining % 60f); // calculate the number of seconds remaining
 
         countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds); // update the Text component with the remaining time
-        if (timeRemaining <= 0)
+        if (timeRemaining <= 0 && called == false)
         {
+            called = true;
             lose.SetActive(true);
             Time.timeScale = 0;
         }

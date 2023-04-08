@@ -2,29 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
 public class Manager : MonoBehaviour
 {
+
     public GameObject Puase;
-    // Start is called before the first frame update
-    void Start()
-    {
+    public GameObject Panel;
+    public GameObject Level;
 
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-
             Time.timeScale = 0;
             Puase.SetActive(true);
         }
     }
-    public void Restart()
+    public void Resume()
     {
+        Time.timeScale = 1;
+        Puase.SetActive(false);
+    }
+    public void Menu()
+    {
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    public void Next()
+    {
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
+    }
+    public void Reset()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
+    public void Close()
+    {
+        Panel.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void Play() 
+    {  
+       Level.SetActive(true);
     }
 }
