@@ -8,6 +8,7 @@ TagManager:
   - Trap
   - TrapHolder
   - Wall
+  - winPanel
   layers:
   - Default
   - TransparentFX

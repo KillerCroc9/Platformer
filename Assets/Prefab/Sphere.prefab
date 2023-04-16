@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912e2fef1e598204ab79953053833473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastLength: 2500000
+  raycastLength: 350

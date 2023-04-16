@@ -13,14 +13,17 @@ public class MazeGenrator : MonoBehaviour
     public GameObject cube;
     public GameObject trap;
     public GameObject spike;
-    int size = 40;
+    public GameObject winTrigger;
+    int size;
+    int trapProb;
     public GameObject Players;
 
     // Start is called before the first frame update
     void Start()
     {
+        size = PlayerPrefs.GetInt("mazeSize");
+        trapProb = PlayerPrefs.GetInt("trapProb");
         Invoke("MazeCaller", 0f);
-
     }
     void Player()
     {
@@ -43,12 +46,20 @@ public class MazeGenrator : MonoBehaviour
         {
             for (int j = 0; j < size - 1; j++)
             {
-             
+
+                if (i == size - 2)
+                {
+                    Instantiate(winTrigger, new Vector3((j * 35), 35, (i * 35)), Quaternion.identity, Maze.transform);
+                }
+                if (j == size - 2)
+                {
+                    Instantiate(winTrigger, new Vector3(((j+1) * 35), 35, (i * 35)), Quaternion.identity, Maze.transform);
+                }
                 if (maze.mazeGrid[i, j] == 'X')
                 {
                    
 
-                    if (UnityEngine.Random.Range(0, 100) < 35 && !HasNeighbour(trapGrid, i, j) && j > 2)
+                    if (UnityEngine.Random.Range(0, 100) < trapProb && !HasNeighbour(trapGrid, i, j) && j > 2)
                     {
                         trapGrid[i, j] = true;
                         Instantiate(trap, new Vector3((j * 35), 35, (i * 35)), Quaternion.identity, Maze.transform);
@@ -61,6 +72,7 @@ public class MazeGenrator : MonoBehaviour
 
             }
         }
+        
         Maze.transform.rotation = Quaternion.Euler(0, 90, 0);
         Maze.transform.position = new Vector3(0, 25, 0);
         Invoke("Player", 0);
@@ -93,7 +105,7 @@ public class MazeGenrator : MonoBehaviour
         int colCount = ((array.GetLength(1)-1)/2);
         List<(int, int)> result = new List<(int, int)>();
 
-        for (int j = 2; j < colCount; j++)
+        for (int j = 2; j < colCount-1; j++)
         {
             for (int i = 2; i < rowCount - consecutiveCount + 1;)
             {
