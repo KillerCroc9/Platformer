@@ -1992,6 +1992,8 @@ MonoBehaviour:
   duration: 180
   lose: {fileID: 4449719656675166003}
   image: {fileID: 1894820953733324154}
+  Player: {fileID: 0}
+  TimeUpCam: {fileID: 0}
 --- !u!114 &4449719657195825272
 MonoBehaviour:
   m_ObjectHideFlags: 0

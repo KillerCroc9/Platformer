@@ -7,16 +7,20 @@ using UnityEngine.UI;
 public class LevelCountDown : MonoBehaviour
 {
     [SerializeField]
-    private float duration = 180f; // the duration of the countdown in seconds
+    private float duration = 10f; // the duration of the countdown in seconds
     //public TextMeshProUGUI countdownText; // the Text component that displays the countdown
     public GameObject lose;
     private float startTime; // the time when the countdown started
     bool called = false;
     public Image image;
-    // Start is called before the first frame update
+    public GameObject Player;
+    public GameObject TimeUpCam;
+    public AudioClip GOW;
+
     void Start()
     {
         startTime = Time.time;
+        
     }
     void Update()
     {
@@ -31,8 +35,24 @@ public class LevelCountDown : MonoBehaviour
         if (timeRemaining <= 0 && called == false)
         {
             called = true;
-            lose.SetActive(true);
-            Time.timeScale = 0;
+            StartCoroutine(DeathPlayer());
+            
         }
+    }
+    IEnumerator DeathPlayer()
+    {
+        TimeUpCam.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        Player = GameObject.FindWithTag("Player");
+        Player.GetComponentInChildren<Animator>().SetBool("isRunning", false);
+        this.GetComponent<AudioSource>().clip = GOW;
+        this.GetComponent<AudioSource>().loop = false;
+        this.GetComponent<AudioSource>().Play();
+        Player.GetComponent<Controller>().enabled = false;
+        Player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Player.GetComponent<Rigidbody>().AddForce(new Vector3(10, 10, 10), ForceMode.Impulse);
+        yield return new WaitForSeconds(9f);
+        Time.timeScale = 0;
+        lose.SetActive(true);
     }
 }

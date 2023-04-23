@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -13,7 +14,8 @@ public class Controller : MonoBehaviour
     public GameObject particle;
     public GameObject particle1;
     Animator animator;
-
+    bool isPlaying;
+    bool transition;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,8 +46,12 @@ public class Controller : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            if (!isPlaying) { 
             particle1.SetActive(true);
             particle.SetActive(true);
+            GetComponent<AudioSource>().Play();
+                isPlaying = true;
+            }
             Physics.gravity = new Vector3(0, 0, 0);
             rb.AddForce(new Vector3(0, speed, 0), ForceMode.Acceleration);
             animator.SetBool("isRunning", false);
@@ -58,15 +64,21 @@ public class Controller : MonoBehaviour
         if (!Input.GetKey(KeyCode.UpArrow))
         {
             Physics.gravity = new Vector3(0, -100f, 0);
-            particle1.SetActive(false);
+            if (isPlaying) {
+                GetComponent<AudioSource>().Stop();
+                particle1.SetActive(false);
             particle.SetActive(false);
+                isPlaying = false;
+            }
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             rb.AddForce(new Vector3(0, -speed, 0), ForceMode.Acceleration);
         }
-        if (Input.GetKey(KeyCode.Tab)) // Switch camera
+        if (Input.GetKey(KeyCode.Tab) && !transition) // Switch camera
         {
+            transition = true;
+            StartCoroutine(Transitions());
             currentCameraIndex++;
             if (currentCameraIndex >= Cams.Length)
             {
@@ -77,6 +89,7 @@ public class Controller : MonoBehaviour
                 if (i == currentCameraIndex)
                 {
                     Cams[i].SetActive(true);
+                    
                 }
                 else
                 {
@@ -84,5 +97,11 @@ public class Controller : MonoBehaviour
                 }
             }
         }
+        
+    }
+    IEnumerator Transitions()
+    {
+        yield return new WaitForSeconds(1.5f);
+        transition = false;
     }
 }

@@ -12,7 +12,7 @@ public class MazeGenrator : MonoBehaviour
 
     public GameObject cube;
     public GameObject trap;
-    public GameObject spike;
+    public GameObject Raycast;
     public GameObject winTrigger;
     int size;
     int trapProb;
@@ -40,7 +40,7 @@ public class MazeGenrator : MonoBehaviour
 
         foreach ((int col, int row) in indexes)
         {
-                Instantiate(spike, new Vector3((col * 35), 35, (row * 35)), Quaternion.identity, Maze.transform);
+                Instantiate(Raycast, new Vector3((col * 35), 35, (row * 35)), Quaternion.identity, Maze.transform);
         }
         for (int i = 0; i < size - 1; i++)
         {
@@ -133,18 +133,7 @@ public class MazeGenrator : MonoBehaviour
         return result;
     }
 
-
-    /* void cleaner()
-     {
-         foreach (Transform child in Maze.transform)
-         {
-             GameObject.Destroy(child.gameObject);
-         }
-     }*/
-
-    /// <summary>
-    /// Creates a random, perfect (without cycles) maze
-    /// </summary>
+    
     public class MyMaze
     {
      

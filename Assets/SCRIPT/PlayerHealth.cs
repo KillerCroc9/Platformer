@@ -16,18 +16,41 @@ public class PlayerHealth : MonoBehaviour
     public GameObject lose;
     public Image Health;
     private int maxHealth;
+    private bool isDead = false;
+    private Controller playerControls;
+    public GameObject timecam;
+    public AudioClip GOW;
+
 
     void Start()
     {
         maxHealth = health;
+        playerControls = GetComponent<Controller>();
     }
 
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
-            lose.SetActive(true);
+            isDead = true;
+            StartCoroutine(DeathPlayer());
         }
+    }
+    IEnumerator DeathPlayer()
+    {
+        timecam.SetActive(true);  
+        yield return new WaitForSeconds(0.1f);
+        playerControls.enabled = false;
+        GetComponentInChildren<Animator>().SetBool("isRunning", false);
+        this.GetComponent<AudioSource>().clip = GOW;
+        this.GetComponent<AudioSource>().loop = false;
+        this.GetComponent<AudioSource>().pitch = 1;
+        this.GetComponent<AudioSource>().Play();
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(10, 10, 10), ForceMode.Impulse);
+        Physics.gravity = new Vector3(0, -28f, 0);
+        yield return new WaitForSeconds(9f);
+        lose.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision collision)
