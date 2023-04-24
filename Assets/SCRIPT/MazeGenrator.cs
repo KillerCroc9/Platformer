@@ -36,7 +36,7 @@ public class MazeGenrator : MonoBehaviour
         bool[,] walkGrid = new bool[size, size];
         maze.UpdateGrid();
 
-        List<(int, int)> indexes = FindAllConsecutiveZeros(maze.mazeGrid, 5);
+        List<(int, int)> indexes = FindAllConsecutiveZeros(maze.mazeGrid, 5); // 5 is the number of consecutive path blocks
 
         foreach ((int col, int row) in indexes)
         {

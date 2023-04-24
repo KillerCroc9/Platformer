@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadLevel(int levelNo)
     {
-        var levelData = LevelDataManager.GetLevelData(levelNo);
+        var levelData = LevelDataManager.GetLevelData(levelNo); //GetLevelData is a static method in LevelDataManager
+        
         if (levelData != null)
         {
             PlayerPrefs.SetInt("mazeSize", levelData.mazeSize);

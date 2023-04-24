@@ -13,7 +13,7 @@ public class LevelData
 
 public static class LevelDataManager
 {
-    private static List<LevelData> levelDataList = new List<LevelData>()
+    private static List<LevelData> levelDataList = new List<LevelData>() //holds all the level data
     {
         new LevelData() { levelNo = 1, mazeSize = 10, trapProb = 15, sceneName = "Meadow Mayhem" },
         new LevelData() { levelNo = 2, mazeSize = 15, trapProb = 15, sceneName = "Meadow Mayhem" },
@@ -30,7 +30,7 @@ public static class LevelDataManager
         // add more levels here
     };
 
-    public static LevelData GetLevelData(int levelNo)
+    public static LevelData GetLevelData(int levelNo) //returns the level data for the given level number
     {
         foreach (var levelData in levelDataList)
         {

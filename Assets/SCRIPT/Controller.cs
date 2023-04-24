@@ -26,7 +26,7 @@ public class Controller : MonoBehaviour
     {
         if (rb.velocity.magnitude > maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rb.velocity = rb.velocity.normalized * maxSpeed; // Normalize the velocity and multiply it by maxSpeed to cap the speed
         }
       
         if (Input.GetKey(KeyCode.RightArrow))

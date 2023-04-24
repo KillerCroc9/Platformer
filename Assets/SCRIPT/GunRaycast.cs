@@ -22,7 +22,7 @@ public class GunRaycast : MonoBehaviour
             {
                 particleSystem.Play();
             }
-            if (Physics.Raycast(ray, out RaycastHit hit, 110f) && hit.collider.CompareTag("Player"))
+            if (Physics.Raycast(ray, out RaycastHit hit, 110f) && hit.collider.CompareTag("Player")) //if the raycast hits the player
             {
                 playerInRange = true;
 
@@ -55,7 +55,7 @@ public class GunRaycast : MonoBehaviour
         }
     }
 
-    IEnumerator DealDamage()
+    IEnumerator DealDamage() //deals damage to the player
     {
         yield return new WaitForSeconds(.5f);
 

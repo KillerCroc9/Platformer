@@ -10,7 +10,7 @@ public class Sound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Delay", .5f);
+        Invoke("Delay", .5f); // Delay the sound check to allow the audio sources to be found
     }
     void Delay() 
     {

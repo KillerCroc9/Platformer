@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(DeathPlayer());
         }
     }
-    IEnumerator DeathPlayer()
+    IEnumerator DeathPlayer() //player death
     {
         timecam.SetActive(true);  
         yield return new WaitForSeconds(0.1f);
@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage() //player damage
     {
         StartCoroutine(Delay());
         StartCoroutine(Blink());
@@ -79,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
         Hit = false;
     }
 
-    IEnumerator Blink()
+    IEnumerator Blink() //player blinking on damage
     {
         while (Hit == true)
         {
@@ -91,7 +91,7 @@ public class PlayerHealth : MonoBehaviour
         PlayerGunMesh.enabled = true;
     }
 
-    IEnumerator UpdateHealthWithDelay(int delta, float duration)
+    IEnumerator UpdateHealthWithDelay(int delta, float duration) //bar transition
     {
         float elapsed = 0f;
         int startHealth = health;
